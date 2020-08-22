@@ -39,15 +39,11 @@ function type(message) {
 
 function createop(text, program) {
     for (let i=1; i<9; i++) {
-        if (document.getElementById("o"+i).classList.contains("filled")) {
-            document.getElementById("o"+(i+1)).classList.add("filled")
-            document.getElementById("o"+(i+1)).innerText=text
-            document.getElementById("o"+(i+1)).addEventListener("click", ()=> {program})
+        if (!document.getElementById("o"+i).classList.contains("filled")) {
+            document.getElementById("o"+i).classList.add("filled")
+            document.getElementById("o"+i).innerText=text
+            document.getElementById("o"+i).addEventListener("click", ()=> {program})
             i=9
-        }else if (i===8) {
-            document.getElementById("o"+1).classList.add("filled")
-            document.getElementById("o"+1).innerText=text
-            document.getElementById("o"+1).addEventListener("click", ()=> {program})
         }
     }
 }
