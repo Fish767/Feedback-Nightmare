@@ -10,8 +10,22 @@ function init() {
   }
 }
 var playingsound=false,
+ mainboolean=false,
  invchck=false,
+ invpage=0,
+ invtracker=0,
+ invtracker2=0,
  songtime=0,
+ savetext1,
+ savetext2,
+ savetext3,
+ savetext4,
+ savetext5,
+ savename1,
+ savename2,
+ savename3,
+ savename4,
+ savename5,
  aste,
  loopthis=true,
  inioption=false,
@@ -345,4 +359,36 @@ while(invid.length<items.length) {
 var resourcesarray=[];
 for (let glgl=resourcesarray.length; glgl<resources.length; glgl++) {
   resourcesarray.push(0)
+}
+
+function defaultvars() {
+  playername=0;
+  mute=false;
+  aprog=[];
+  Aster=false;
+  man=false;
+  drones=[0,0];
+  crafts=[0];
+  storevolume=1;
+  resourcesarray=[];
+  prestige=1;
+  librarycard=false;
+  town1=false;
+  money=0;
+  town=false;
+  temple=false;
+  feet=false;
+  helmet=false;
+  weapon=false;
+  ability=0;
+  upperbody=false;
+  lowerbody=false;
+  invid=[];
+  lifesavingvariable=false;
+  room=0;
+  roomprog=[];
+  textnum=0;
+  hunger=100;
+  thirst=100;
+  stats=[["Health: ",100],["Attack: ",10],["Defense: ",10],["Speed: ", 10],["Exp: ",0],[100,100,1]];
 }

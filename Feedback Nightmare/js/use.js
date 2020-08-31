@@ -8,17 +8,20 @@ function use(number) {
             invid[number]-=1
         }
         if (idds===4) {
-            document.getElementById("body").innerHTML+="<div class=textbox>"+itemeffects[idds]+"</div>"
+            type(itemeffects[idds])
         }else if (idds!==5&&idds!==6&&items[number].type!=="card") {
-            document.getElementById("body").innerHTML+="<div class=textbox>"+itemeffects[idds]+"</div><button class=\"cancel\" onclick=\"cancel()\" id=\"cancel\">Cancel</button>"
+            type(itemeffects[idds])
         }else if (fforrm==="Human"&&items[number].type!=="card") {
-            document.getElementById("body").innerHTML+="<div class=textbox>"+itemeffects[idds]+"</div><button class=\"cancel\" onclick=\"cancel()\" id=\"cancel\">Cancel</button>"
+            type(itemeffects[idds])
         }else if (items[number].type!=="card") {
-            document.getElementById("body").innerHTML+="<div class=textbox>You can't use this.</div><button class=\"cancel\" onclick=\"cancel()\" id=\"cancel\">Cancel</button>"
+            type("You can't use this.")
         }else {    
         }
     }else {
-        document.getElementById("body").innerHTML="<div class=textbox>Not in a battle.</div><button class=\"cancel\" onclick=\"cancel()\">Cancel</button>"
+        type("Not in a battle.")
+    }
+    if (idds!==4) {
+        createop("Cancel","cancel()")
     }
 }
 
@@ -33,20 +36,21 @@ function buse(number, onum) {
                 invid[number]-=1
             }
             if (idds===4) {
-                document.getElementById("body").innerHTML+="<div class=textbox>"+itemeffects[idds]+"</div>"
+                type(itemeffects[idds])
             }else if (idds!==5&&idds!==6) {
-                document.getElementById("body").innerHTML+="<div class=textbox>"+itemeffects[idds]+"</div>"
+                type(itemeffects[idds])
             }else if (fforrm==="Human") {
-                document.getElementById("body").innerHTML+="<div class=textbox>"+itemeffects[idds]+"</div>"
+                type(itemeffects[idds])
             }else {
-                document.getElementById("body").innerHTML+="<div class=textbox>You can't use this.</div>"
+                type("You can't use this.")
             }
         }
         if (idds!==4&&items[number].type!=="card") {
-            document.getElementById("body").innerHTML+="<button class=\"cancel\" onclick=\"cancel()\" id=\"cancel\">Cancel</button>"
+            createop("Cancel","cancel()")
         }
     }else {
-        document.getElementById("body").innerHTML="<div class=textbox>Not in a battle.</div><button class=\"cancel\" onclick=\"cancel()\">Cancel</button>"
+        type("Not in a battle.")
+        createop("Cancel","cancel()")
     }
 }
 

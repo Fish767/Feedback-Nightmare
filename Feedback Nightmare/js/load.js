@@ -7,7 +7,26 @@ function load() {
         reader.readAsText(file,'UTF-8');
         reader.onload = readerEvent => {
             var content = readerEvent.target.result;
-            document.getElementById("option-container").innerHTML="<div id=\"o1\" class=\"option\" onclick=\"load()\">Load Save</div><div id=\"o2\" class=\"option\" onclick=\""+content+"window.addEventListener('load', init, false);init();yesplease();menu=false;check();\">Start</div><div id=\"o3\" class=\"option\" onclick=\"window.addEventListener('load', init, false);init();menu=false;check();\">New Game</div>"
+            document.getElementById("body").innerHTML="<div id=\"textbox\" class=\"textbox\"></div><div class=\"option-container\" id=\"oc\"></div>"
+            for (let i=1; i<9; i++) {
+                document.getElementById("oc").innerHTML+="<div id=\"o"+i+"\" class=\"option\"></div>"
+            }
+            if (mainboolean) {
+                addtext("Save Slot 1 - ")
+                addtext(savename1+"<br><br>Save Slot 2 - ")
+                addtext(savename2+"<br><br>Save Slot 3 - ")
+                addtext(savename3+"<br><br>Save Slot 4 - ")
+                addtext(savename4+"<br><br>Save Slot 5 - ")
+                addtext(savename5)
+                createop("Slot 1","loadss(1)")
+                createop("Slot 2","loadss(2)")
+                createop("Slot 3","loadss(3)")
+                createop("Slot 4","loadss(4)")
+                createop("Slot 5","loadss(5)")
+            }
+            createop("Load Save","load()")
+            createop("New Game","window.addEventListener('load', init, false);init();menu=false;check();")
+            createop("Start",content+"window.addEventListener('load', init, false);init();yesplease();menu=false;check();")
         }
     }
     input.click();

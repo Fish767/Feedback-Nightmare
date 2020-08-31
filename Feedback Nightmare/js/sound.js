@@ -171,17 +171,31 @@ function musictogg() {
   }
 }
 function yesplease() {
-  shipsound.volume = storevolume;
-  clearingmusic.volume = storevolume;
-  boss1mus.volume = storevolume;
-  technolandbase.volume = storevolume;
-  technolandfold.volume = storevolume;
-  puzzle.volume = storevolume;
-  zombieland.volume = storevolume;
-  tm.volume = storevolume;
-  tem.volume = storevolume;
-  c2m.volume = storevolume;
-  s12.volume = storevolume;
+  if (mute===false) {
+    shipsound.volume = storevolume;
+    clearingmusic.volume = storevolume;
+    boss1mus.volume = storevolume;
+    technolandbase.volume = storevolume;
+    technolandfold.volume = storevolume;
+    puzzle.volume = storevolume;
+    zombieland.volume = storevolume;
+    tm.volume = storevolume;
+    tem.volume = storevolume;
+    c2m.volume = storevolume;
+    s12.volume = storevolume;
+  }else {
+    shipsound.volume = 0;
+    clearingmusic.volume = 0;
+    boss1mus.volume = 0;
+    technolandbase.volume = 0;
+    technolandfold.volume = 0;
+    puzzle.volume = 0;
+    zombieland.volume = 0;
+    tm.volume = 0;
+    tem.volume = 0;
+    c2m.volume = 0;
+    s12.volume = 0;
+  }
   savefix()
 }
 

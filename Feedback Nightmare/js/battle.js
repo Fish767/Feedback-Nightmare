@@ -9,7 +9,7 @@ function battle(num) {
     }
     var neccessary=enemies[num]
     if (battlechk===false) {
-        spriteidentifier=Math.floor(Math.random()*2+1)
+        spriteidentifier=Math.floor(Math.random()*3+1)
         fillpic(num)
         battlechk=num
         temphealth=neccessary.health
@@ -181,16 +181,18 @@ function fillpic(num) {
             document.getElementById("enemypicture").appendChild(img)
             if (imagechk) {
                 imageprog+=1
-                if (imageprog===6) {
+                if (imageprog>=6) {
+                    imageprog=6
                     imagechk=false
                 }
             }else {
                 imageprog-=1;
-                if (imageprog===1) {
+                if (imageprog<=1) {
+                    imageprog=1
                     imagechk=true
                 }
             }
-        }, 17);
+        }, 50);
     }else if (num===0) {
         imageprogressioncode=setInterval(() => {
             var img = document.createElement("img");
@@ -199,12 +201,12 @@ function fillpic(num) {
             img.id="img"
             document.getElementById("enemypicture").innerHTML=""
             document.getElementById("enemypicture").appendChild(img)
-            if (imageprog===2) {
-                imageprog-=1;
+            if (imageprog>=2) {
+                imageprog=1;
             }else {
-                imageprog+=1;
+                imageprog=2;
             }
-        }, 1000);
+        }, 500);
     }
 }
 

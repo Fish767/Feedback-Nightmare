@@ -19,9 +19,11 @@ function updateGUI3 (){
         createop("Cancel","cancel()")
         movemenu=false
     }else if (talking===true) {
-        cleardoc("textbox")
-        printLetterByLetter("textbox",talktext[room],15)
+        type(talktext[room])
         talking=false
+        for (let i=1; i<6; i++) {
+            createop(options[i-1],"dooption("+i+")")
+        }
     }else if (looking===true) {
         cleardoc("textbox")
         type(searchtext[room][roomprog[room][0]])
@@ -30,6 +32,9 @@ function updateGUI3 (){
         }
         if (roomprog[room][0]!==roomprog[room][1]) {
             roomprog[room][0]+=1;
+        }
+        for (let i=1; i<6; i++) {
+            createop(options[i-1],"dooption("+i+")")
         }
         looking=false
     }else if (invchck===false) {
@@ -46,16 +51,53 @@ function updateGUI3 (){
         }
         type(roomtext[room])
         for (let i=1; i<6; i++) {
-        createop(options[i-1],"dooption("+i+")")
+            createop(options[i-1],"dooption("+i+")")
         }
     }else if (inioption===false) {
-        document.getElementById("body").innerHTML="<div id=\"inventory-container\"><div id=\"item-container\"></div></div><div class=\"option-container\" id=\"oc\"></div>"
-        for (let j=0; j<invid.length; j++) {
-            if (invid[j]!==0) {
-                document.getElementById("item-container").innerHTML+="<div><div class=\"invslot\">"+items[j].name+" x"+invid[j]+"</div><br><div class=\"item-options-buttons\" onclick=\"dio("+j+")\">Options</div></div>"
+        refreshinv()
+    }
+}
+
+function refreshinv() {
+    invtracker2=0
+    invtracker=0
+    document.getElementById("body").innerHTML="<div class=\"option-container\" id=\"oc\"></div>"
+    for (let i=1; i<9; i++) {
+        document.getElementById("oc").innerHTML+="<div id=\"o"+i+"\" class=\"option\"></div>"
+    }
+    for (let j=0; j<5;) {
+        if (invid[invtracker]!==0) {
+            invtracker2++
+            if (invtracker2>=(5*invpage)) {
+                createop(items[invtracker].name+" x"+invid[invtracker],"dio("+invtracker+")")
+                j++
             }
         }
-        createop("Cancel","cancel()")
+        invtracker++
+        if (invtracker>=invid.length-1) {
+            j=5
+        }
+    }
+    document.getElementById("o6").remove()
+    document.getElementById("o7").remove()
+    document.getElementById("o8").remove()
+    document.getElementById("oc").innerHTML+="<div id=\"o6\" class=\"option\" onclick=\"if (invpage>0) {invpage--;refreshinv();}\"><==</div>"
+    document.getElementById("oc").innerHTML+="<div id=\"o7\" class=\"option\" onclick=\"pageincrease();refreshinv()\">==></div>"
+    document.getElementById("oc").innerHTML+="<div id=\"o8\" class=\"option\" onclick=\"cancel()\">Cancel</div>"
+    document.getElementById("o6").classList.add("filled")
+    document.getElementById("o7").classList.add("filled")
+    document.getElementById("o8").classList.add("filled")
+}
+
+function pageincrease() {
+    let runn=0
+    for (let i=0; i<invid.length; i++) {
+        if (invid[i]!==0) {
+            runn++
+        }
+    }
+    if ((runn/5)>=(invpage+1)) {
+        invpage++;
     }
 }
 

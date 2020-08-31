@@ -38,12 +38,16 @@ function type(message) {
 }
 
 function createop(text, program) {
+    let temporarycode=program
     for (let i=1; i<9; i++) {
         if (!document.getElementById("o"+i).classList.contains("filled")) {
-            document.getElementById("o"+i).classList.add("filled")
-            document.getElementById("o"+i).innerText=text
-            document.getElementById("o"+i).addEventListener("click", ()=> {program})
-            i=9
+            document.getElementById("o"+i).remove()
+            document.getElementById("oc").innerHTML+="<div id=\"o"+i+"\" class=\"option\" onclick=\""+temporarycode+"\">"+text+"</div>"
+            if (temporarycode===program) {
+                document.getElementById("o"+i).classList.add("filled")
+            }
+            temporarycode=""
+            text=""
         }
     }
 }

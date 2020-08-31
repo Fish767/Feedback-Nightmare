@@ -6,7 +6,11 @@ function loopmenu () {
             document.getElementById("oc").innerHTML+="<div id=\"o"+i+"\" class=\"option\"></div>"
         }
         document.getElementById("atrib").innerHTML="Feedback: Nightmare"
-        createop("Load Save","load()")
+        if (mainboolean) {
+            createop("Load Save","loadmenu()")
+        }else {
+            createop("Load Save","load()")
+        }
         createop("New Game","window.addEventListener('load', init, false);init();menu=false;check();")
         loopthis=false
     }else if (loopthis==="temp") {
@@ -17,7 +21,7 @@ function loopmenu () {
         document.getElementById("atrib").innerHTML="Music by Eric Matyas<br>www.soundimage.org<br><br><br>Art by Dillysim9"
         createop("Hint","hint()")
         createop("Options","optionss()")
-        createop("Download Save","downloadmenu()")
+        createop("Save","downloadmenu()")
         createop("Quit","javascript:window.close('','_parent','');")
         createop("Back","menu=false;check();")
         loopthis=false
@@ -163,6 +167,6 @@ function volumemenu() {
     input.autofocus=true;
     input.id="input"
     document.getElementById("inputfieldarea").appendChild(input)
-    createop("Submit","musicadjust(parseFloat("+document.getElementById('input').value+"));")
+    createop("Submit","let tempstringthing=document.getElementById('input').value;musicadjust(parseFloat(tempstringthing));")
     createop("Back","optionss()")
 }
