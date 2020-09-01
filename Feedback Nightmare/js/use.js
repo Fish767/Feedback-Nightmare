@@ -1,8 +1,8 @@
 function use(number) {
+    let idds=number
     if (battlechk===false) {
         document.getElementById("body").innerHTML=""
         let fforrm=form
-        let idds=number
         let yon=doEffects(idds)
         if (yon==="yes") {
             invid[number]-=1
@@ -21,7 +21,7 @@ function use(number) {
         type("Not in a battle.")
     }
     if (idds!==4) {
-        createop("Cancel","cancel()")
+        createop("Cancel","stop=true;cancel()")
     }
 }
 
