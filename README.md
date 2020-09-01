@@ -1,5 +1,3 @@
 # Feedback-Nightmare
 
-This is a text based horror game that I have been working on for a while now. A mistake in GitHub file uploading led to an unintentional deletion of the previous README flie. I will try to restore a similar version later.
-
-This version is temporarily down due to a bug.
+This version is discontinued. Go to https://fish767.itch.io/feedback-nightmare to get the latest version.
